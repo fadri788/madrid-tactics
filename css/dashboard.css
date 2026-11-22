@@ -1,0 +1,124 @@
+/* Page CSS for index.html: only what sits inside a visual and the kit (assets/system.css) lacks. */
+
+/* ---------- Hero: the winning goal drawn on the board ---------- */
+.board-still { display: grid; place-items: center; }
+.board-still svg { width: 100%; height: 100%; overflow: hidden; }
+.board-still .pitch { fill: none; stroke: color-mix(in oklab, var(--ink) 22%, transparent); stroke-width: 2; }
+.board-still .pitch__goal { fill: color-mix(in oklab, var(--ink) 6%, transparent); stroke: color-mix(in oklab, var(--ink) 45%, transparent); }
+.board-still .move { fill: none; stroke-linecap: round; }
+.board-still .move--pass { stroke: var(--accent); stroke-width: 4; }
+.board-still .move--shot { stroke: var(--accent); stroke-width: 6; }
+.board-still .move--carry { stroke: var(--ink); stroke-width: 3.5; stroke-dasharray: 1 9; }
+.board-still .move--run { stroke: var(--muted); stroke-width: 2.5; stroke-dasharray: 9 8; }
+.board-still .pl circle { stroke-width: 2.5; }
+.board-still .pl--rm circle { fill: var(--bg); stroke: var(--ink); }
+.board-still .pl--opp circle { fill: #a50044; stroke: #a50044; }
+.board-still .pl--opp.pl--gk circle { fill: #8a8a8a; stroke: #8a8a8a; }
+.board-still .pl__num { font: 600 12px var(--font-text); }
+.board-still .pl--rm .pl__num { fill: var(--ink); }
+.board-still .pl--opp .pl__num { fill: #fff; }
+.board-still .pl__name { font: 500 17px var(--font-text); fill: var(--ink); paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round; }
+.board-still .ball { fill: #fff; stroke: var(--ink); stroke-width: 2; }
+
+/* the key under the board: the move's name left, what the lines mean right */
+.board-still__key { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-5); margin-top: var(--s-4); color: var(--muted); }
+.board-still__title { color: var(--ink); margin-right: auto; }
+.board-still__key .k::before { content: ""; display: inline-block; width: 22px; height: 0; margin-right: var(--s-2); vertical-align: middle; border-top: 3px solid var(--accent); }
+.board-still__key .k--carry::before { border-top: 3px dotted var(--ink); }
+.board-still__key .k--run::before { border-top: 2px dashed var(--muted); }
+.hero--product .hero__stage:has(> .board-still) { margin-bottom: 0; }
+.hero--product .hero__stage > .board-still { inset: 0; }
+
+/* the hero's entrance: the move draws itself once, step by step */
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-motion="off"]) .board-still .move--pass,
+  html:not([data-motion="off"]) .board-still .move--shot {
+    stroke-dasharray: var(--len); stroke-dashoffset: var(--len);
+    animation: move-draw .55s cubic-bezier(.2, .7, .2, 1) forwards;
+    animation-delay: calc(.6s + var(--i) * .32s);
+  }
+  html:not([data-motion="off"]) .board-still :is(.move--carry, .move--run, .ball) {
+    opacity: 0; animation: move-show .45s ease-out forwards; animation-delay: calc(.6s + var(--i) * .32s);
+  }
+}
+@keyframes move-draw { to { stroke-dashoffset: 0; } }
+@keyframes move-show { to { opacity: 1; } }
+
+/* ---------- Numbers ---------- */
+.numbers { align-content: start; }
+.compare { display: grid; gap: var(--s-5); }
+.compare__top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: baseline; margin-bottom: var(--s-2); font-variant-numeric: tabular-nums; }
+.compare__rm, .compare__opp { font: var(--display-weight) var(--t-h3)/1 var(--font-display); letter-spacing: var(--display-tracking); }
+.compare__opp { text-align: right; color: var(--muted); }
+.compare__name { font-size: var(--t-small); }
+.compare__bar { height: 8px; border-radius: 4px; background: color-mix(in oklab, var(--ink) 12%, var(--bg)); overflow: hidden; }
+.compare__fill { display: block; height: 100%; width: calc(var(--rm) * 100%); background: var(--ink); border-radius: 4px; }
+.compare__key { display: flex; align-items: center; gap: var(--s-2); margin-top: var(--s-5); }
+.compare__key .key { width: 12px; height: 12px; border-radius: 3px; }
+.compare__key .key--rm { background: var(--ink); }
+.compare__key .key--opp { background: color-mix(in oklab, var(--ink) 12%, var(--bg)); margin-left: var(--s-4); }
+.motm { align-self: start; gap: var(--s-4); }
+.motm__line { max-width: 34ch; }
+.motm__stats { margin-top: var(--s-4); padding-top: var(--s-5); border-top: 1px solid var(--line); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* ---------- Goals ---------- */
+.timeline { position: relative; height: 64px; margin: 0 var(--s-5) var(--s-6); }
+.timeline__line { position: absolute; left: 0; right: 0; top: 30px; height: 2px; background: var(--line-strong); }
+.timeline__tick { position: absolute; top: 42px; transform: translateX(-50%); font-size: var(--t-label); color: var(--muted); white-space: nowrap; }
+.timeline__goal { position: absolute; top: 0; transform: translateX(-50%); font: 500 var(--t-label)/1 var(--font-text); }
+.timeline__goal::after { content: ""; position: absolute; left: 50%; top: 22px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; border: 2px solid var(--ink); background: var(--ink); }
+.timeline__goal--opponent::after { background: var(--bg); }
+.goal-rows { border-top: 1px solid var(--line); }
+.goal-row { border-bottom: 1px solid var(--line); }
+.goal-row__in { display: grid; grid-template-columns: 72px minmax(0, 200px) minmax(0, 1fr) auto; gap: var(--s-2) var(--s-5); align-items: baseline; padding-block: var(--s-5); }
+.goal-row__min { font: var(--display-weight) var(--t-h3)/1 var(--font-display); letter-spacing: var(--display-tracking); font-variant-numeric: tabular-nums; }
+.goal-row--opponent .goal-row__min { color: var(--muted); }
+.goal-row__who { display: grid; gap: 2px; }
+.goal-row__scorer { font-weight: 500; }
+.goal-row__team { font-size: var(--t-small); }
+.goal-row__how { max-width: 60ch; }
+.goal-row__go { font-size: var(--t-small); font-weight: 500; color: var(--action); white-space: nowrap; }
+a.goal-row__in:hover .goal-row__go { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- Keys ---------- */
+.keys { --card-pad: var(--s-5); }
+.keys .key { gap: var(--s-2); }
+.key__verdict { display: inline-flex; align-items: center; gap: var(--s-2); color: var(--muted); }
+.key__verdict::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3fb36b; }
+.key--mixed .key__verdict::before { background: #e0a526; }
+.key--failed .key__verdict::before { background: #e5534b; }
+@media (min-width: 640px) and (max-width: 1023px) { .keys .key { grid-column: span 6; } }
+
+/* ---------- Season ---------- */
+.season__list { display: grid; gap: var(--s-7); align-content: start; }
+.table-wrap { overflow-x: auto; }
+.season table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.season th { text-align: left; font-size: var(--t-label); font-weight: 500; color: var(--muted); padding: 0 var(--s-3) var(--s-3) 0; border-bottom: 1px solid var(--line); }
+.season td { padding: var(--s-4) var(--s-3) var(--s-4) 0; border-bottom: 1px solid var(--line); }
+.season .num { text-align: right; }
+.result--W { font-weight: 500; }
+.season__photo { overflow: hidden; border-radius: var(--r-lg); aspect-ratio: 1; align-self: start; }
+.season__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+.season__photo:hover img { transform: scale(1.025); }
+
+/* ---------- Footer ---------- */
+.footer__legal .sources { flex: 1 1 320px; }
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 1023px) {
+  .numbers > .span-7, .numbers > .motm, .season > .span-7, .season > .season__photo { grid-column: 1 / -1; }
+  .season__photo { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 639px) {
+  .hide-narrow { display: none; }
+  .goal-row__in { grid-template-columns: 56px minmax(0, 1fr); }
+  .goal-row__how, .goal-row__go { grid-column: 2; }
+  .board-still__key .k { display: none; }
+  .keys .key { grid-column: 1 / -1; }
+}
+
+/* the closing name fits the wrap at every width (two words, about 6.3em wide) */
+footer.closing .close__word { font-size: clamp(40px, 12vw, 184px); line-height: 1; padding-top: .04em; }
+@media (max-width: 639px) { .footer__legal .sources { flex-basis: auto; } }
+/* at 320 the logo and the menu button are all the bar holds; the hero has the same button */
+@media (max-width: 400px) { header.nav .nav__actions { display: none; } }

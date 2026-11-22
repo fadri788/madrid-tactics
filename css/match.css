@@ -1,0 +1,58 @@
+/* Page CSS for match.html. Kit: assets/system.css, look: css/theme.css.
+   The PNG is made by js/vendor/html-to-image.js, which lets the browser draw it, so it matches the screen. */
+
+.graphic-page { padding-top: calc(var(--nav-h, 64px) + var(--s-7)); padding-bottom: var(--s-9); }
+.graphic-layout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s-8); align-items: start; }
+.graphic-intro { position: sticky; top: calc(var(--nav-h, 64px) + var(--s-6)); display: grid; gap: var(--s-5); max-width: 30rem; }
+.graphic-intro h1 { font-size: var(--t-h2); margin: 0; }
+.graphic-intro .t-lead { margin: 0; }
+.graphic-note { margin: 0; font-size: var(--t-small); }
+.graphic-note.is-error { color: #b42318; }
+.handle-field { display: grid; gap: var(--s-2); margin-top: var(--s-3); }
+.handle-field input { height: 48px; padding: 0 var(--s-4); border: 1px solid var(--line-strong); border-radius: 10px; background: var(--bg); color: var(--ink); font: 400 var(--t-body) var(--font-text); }
+.handle-field input:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; border-color: var(--ink); }
+
+.graphic-scaler { width: 100%; max-width: 600px; justify-self: end; aspect-ratio: 1080 / 1350; position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 0 0 1px var(--line), 0 24px 60px -30px rgba(10, 10, 10, .35); }
+
+@media (max-width: 1023px) {
+  .graphic-layout { grid-template-columns: 1fr; gap: var(--s-7); }
+  .graphic-intro { position: static; }
+  .graphic-scaler { justify-self: center; }
+}
+
+/* ---------- The graphic: 1080×1350 ---------- */
+.graphic {
+  position: absolute; left: 0; top: 0; width: 1080px; height: 1350px; transform-origin: 0 0;
+  display: flex; flex-direction: column; gap: 26px; padding: 60px 64px;
+  background: #f8f8f8; color: #0a0a0a; font-family: "SUSE", system-ui, sans-serif;
+}
+.graphic p { margin: 0; }
+.g-label { font-size: 26px; color: #6a6a6a; }
+.g-score { margin-top: 0; font-size: 150px; font-weight: 500; line-height: 1; letter-spacing: -0.045em; white-space: nowrap; width: fit-content; font-variant-numeric: tabular-nums; }
+.g-tagline { margin-top: 52px; font-size: 32px; line-height: 1.3; max-width: 40ch; }
+
+.g-stadium { flex: 0 0 160px; border-radius: 20px; background-color: #eeeeee; background-size: cover; background-position: center; }
+
+.g-stats { display: flex; flex-direction: column; gap: 16px; }
+.g-stat-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+.g-stat-rm, .g-stat-opp { font-size: 30px; font-weight: 500; letter-spacing: -0.02em; }
+.g-stat-opp { color: #6a6a6a; }
+.g-stat-name { font-size: 22px; color: #6a6a6a; }
+.g-track { height: 14px; border-radius: 7px; overflow: hidden; background: #dcdcdc; }
+.g-fill { height: 100%; border-radius: 7px; background: #0a0a0a; }
+
+.g-timeline { position: relative; height: 96px; flex-shrink: 0; margin: 0 8px; }
+.g-line { position: absolute; left: 0; right: 0; top: 46px; height: 3px; background: #c9c9c9; }
+.g-goal { position: absolute; top: 0; width: 220px; margin-left: -110px; text-align: center; font-size: 22px; white-space: nowrap; }
+.g-min { display: block; height: 30px; line-height: 30px; color: #6a6a6a; }
+.g-dot { width: 26px; height: 26px; margin: 4px auto 10px; border-radius: 50%; border: 3px solid #0a0a0a; background: #0a0a0a; }
+.g-goal--opponent .g-dot { background: #f8f8f8; }
+.g-goal--opponent .g-scorer { color: #6a6a6a; }
+.g-scorer { font-weight: 500; }
+
+.g-keys { display: flex; flex-direction: column; gap: 18px; }
+.g-key { padding-left: 26px; border-left: 4px solid #1f6b3a; }
+.g-key-title { font-size: 30px; font-weight: 500; letter-spacing: -0.015em; }
+.g-key-detail { margin-top: 4px; font-size: 22px; line-height: 1.35; color: #555555; }
+
+.g-footer { margin-top: auto; display: flex; justify-content: space-between; font-size: 22px; color: #6a6a6a; }

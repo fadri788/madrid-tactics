@@ -1,0 +1,6 @@
+.vscode/
+.taste-skill/
+_backup-vor-redesign/
+*.log
+.DS_Store
+Thumbs.db

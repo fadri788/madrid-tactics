@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- Redesigned with tasteskill 2.5.1 (design-taste-frontend). Same look as index.html:
+     kit in assets/, shared fonts and palette in css/theme.css, page CSS in css/match.css. -->
+<html lang="en" data-type="software" data-radius="soft" data-buttons="tonal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Match graphic: a picture of the game to share</title>
+<meta name="description" content="A 1080×1350 picture of each big Real Madrid game: score, numbers, goals and what worked.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f8f8f8">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/match.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#graphic-page">Skip to the graphic</a>
+    <a class="nav__logo" href="index.html"><span class="mark" data-mark="arc" aria-hidden="true"></span>Madrid Tactics</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="index.html">Dashboard</a></div>
+      <div class="nav__item"><a class="nav__link" id="nav-board" href="tactics.html">Tactics board</a></div>
+      <div class="nav__item"><a class="nav__link" href="match.html" aria-current="page">Match graphic</a></div>
+    </nav>
+    <div class="nav__actions"></div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="graphic-page" class="graphic-page">
+  <div class="wrap graphic-layout">
+    <div class="graphic-intro">
+      <h1>Match graphic</h1>
+      <p class="t-lead" id="intro-lead">One picture of the game for Instagram, 1080 by 1350 pixels.</p>
+      <div class="btn-row">
+        <button class="btn btn--primary" id="download" type="button">Download PNG</button>
+      </div>
+      <p class="graphic-note muted" id="download-note">Open the page through Live Server, so the PNG gets the right font.</p>
+      <label class="handle-field">
+        <span class="t-label">Your handle on the picture</span>
+        <input id="handle" type="text" autocomplete="off" spellcheck="false" placeholder="@yourhandle">
+      </label>
+    </div>
+
+    <div class="graphic-scaler" id="scaler">
+      <!-- Built at full size (1080×1350) and scaled down to fit the screen. -->
+      <div class="graphic" id="graphic">
+        <div class="g-top">
+          <p class="g-label" id="g-label"></p>
+          <p class="g-score" id="g-score"></p>
+          <p class="g-tagline" id="g-tagline"></p>
+        </div>
+        <div class="g-stadium" id="g-stadium" aria-hidden="true"></div>
+        <div class="g-stats" id="g-stats"></div>
+        <div class="g-timeline" id="g-timeline"><div class="g-line"></div></div>
+        <div class="g-keys" id="g-keys"></div>
+        <div class="g-footer">
+          <span id="g-setup"></span>
+          <span id="g-handle"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- html-to-image (MIT) turns the graphic into a PNG. Kept locally, so it works offline.
+     Replaces html2canvas, which drew the SUSE font too low. -->
+<script src="js/vendor/html-to-image.js"></script>
+<script src="js/data.js"></script>
+<script src="js/stadiums.js"></script>
+<script src="js/match.js"></script>
+<script src="js/pwa.js"></script>
+<script type="module" src="assets/system.js"></script>
+</body>
+</html>

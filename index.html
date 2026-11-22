@@ -1,0 +1,162 @@
+<!doctype html>
+<!-- Redesigned with tasteskill 2.5.1 (design-taste-frontend, github.com/Leonxlnx/taste-skill, MIT).
+     The kit lives in assets/ (system.css, motion, layout, moments). Page CSS: css/dashboard.css.
+     Shared fonts and palette: css/theme.css (all three pages use it). -->
+<html lang="en" data-type="software" data-radius="soft" data-buttons="tonal" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Madrid Tactics: how Real Madrid won their big games</title>
+<meta name="description" content="Tactical breakdowns of Real Madrid's Clásicos, derbies and Champions League knockouts, with every goal drawn on a board.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Madrid Tactics: how Real Madrid won their big games">
+<meta property="og:description" content="Every big Real Madrid game broken down: the numbers, the goals and the plan.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f8f8f8">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/iris-opens/moment.js">
+</head>
+<body>
+<!-- type: software (a match-analysis tool)
+     deal: hero product (the winning goal drawn on the board is the product), palette mint-pink-accounts
+     (its green is the pitch; the first deal's pink fought Madrid's white), type suse, nav-mega (kept to plain
+     words: one page), close-word, footer-columns, rhythm space, buttons tonal, mark arc
+     moments: iris-opens on #keys -->
+
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <!-- Your own crest: swap the mark for <img src="img/crest.png" alt="" width="28" height="28"> -->
+    <a class="nav__logo" href="index.html"><span class="mark" data-mark="arc" aria-hidden="true"></span>Madrid Tactics</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="index.html" aria-current="page">Dashboard</a></div>
+      <div class="nav__item"><a class="nav__link" id="nav-board" href="tactics.html">Tactics board</a></div>
+      <div class="nav__item"><a class="nav__link" id="nav-graphic" href="match.html">Match graphic</a></div>
+    </nav>
+    <div class="nav__actions"></div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--product" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text hero__in">
+      <div class="hero__head">
+        <div>
+          <h1 id="hero-h"></h1>
+          <p class="hero__lead" id="hero-lead"></p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" id="board-link" href="tactics.html">Watch the goals</a>
+          <a class="btn btn--secondary" id="graphic-link" href="match.html">Open the match graphic</a>
+        </div>
+      </div>
+      <div class="hero__stage">
+        <!-- the winning goal, drawn from js/boards.js -->
+        <div class="frame board-still" data-product="board">
+          <svg id="hero-board" role="img" aria-label=""></svg>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="numbers" aria-labelledby="numbers-h">
+    <div class="wrap grid numbers">
+      <div class="section-head span-12"><h2 id="numbers-h"></h2></div>
+      <div class="span-7">
+        <ul class="compare" id="compare" aria-label="Madrid against the opponent"></ul>
+        <p class="compare__key t-label muted"><span class="key key--rm"></span>Real Madrid <span class="key key--opp"></span><span id="opp-name"></span></p>
+      </div>
+      <article class="card motm span-4 start-9" id="motm" aria-labelledby="motm-name">
+        <p class="t-label muted">Man of the match</p>
+        <h3 class="motm__name" id="motm-name"></h3>
+        <p class="motm__line" id="motm-line"></p>
+        <dl class="stats motm__stats" id="motm-stats"></dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="goals" aria-labelledby="goals-h">
+    <div class="wrap">
+      <div class="section-head"><h2 id="goals-h"></h2></div>
+      <div class="timeline" id="timeline" aria-hidden="true">
+        <span class="timeline__line"></span>
+        <span class="timeline__tick" style="left:0">0'</span>
+        <span class="timeline__tick" style="left:50%">Half time</span>
+        <span class="timeline__tick" style="left:100%">90'</span>
+      </div>
+      <ul class="goal-rows" id="goal-rows"></ul>
+    </div>
+  </section>
+
+  <section class="section ground-inverse" id="keys" aria-labelledby="keys-h" data-moment="iris-opens" data-moment-opts='{"from": "base"}'>
+    <div class="wrap">
+      <div class="section-head"><h2 id="keys-h"></h2></div>
+      <div class="grid keys" id="keys-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="season" aria-labelledby="season-h">
+    <div class="wrap grid season">
+      <div class="section-head span-12">
+        <h2 id="season-h">Every big game this season. <span class="muted">Clásicos, derbies and Champions League knockouts.</span></h2>
+      </div>
+      <div class="span-7 season__list">
+        <dl class="stats" id="record"></dl>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Date</th><th scope="col">Opponent</th><th scope="col" class="hide-narrow">Competition</th><th scope="col" class="num">Score</th><th scope="col">Result</th><th scope="col" class="num hide-narrow">Possession</th></tr></thead>
+            <tbody id="games"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="span-4 start-9 season__photo" id="season-photo" hidden></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Watch the goals move by move</h2><p class="t-lead">Every Madrid goal on an animated board, with a record mode for screen captures.</p></div>
+        <a class="btn btn--primary" id="close-board" href="tactics.html">Watch the goals<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+      <p class="close__word" aria-hidden="true">Madrid Tactics</p>
+    </div>
+    <div class="closing__links">
+      <div class="footer__legal">
+        <span>&copy; 2026 Madrid Tactics</span>
+        <span class="sources" id="sources"></span>
+        <span>Board positions are read from broadcast footage, so they're approximate.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/boards.js"></script>
+<script src="js/stadiums.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/pwa.js"></script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+</body>
+</html>
