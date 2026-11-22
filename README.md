@@ -12,6 +12,8 @@ Tactical breakdowns of Real Madrid's big games (Clásicos, derbies, Champions Le
 
 Unzip it and open `index.html` with Live Server (see below).
 
+Or use it online, no download needed: **https://fadri788.github.io/madrid-tactics/**
+
 ## Run it
 
 No npm, no build step: plain HTML, CSS and JavaScript.
@@ -23,7 +25,7 @@ Open it through Live Server (or any web server), not by double-clicking: the pag
 
 ### Install as an app
 
-The site is a PWA. Open it through Live Server in Chrome and click **Install app** in the top bar. It then has its own window and works offline.
+The site is a PWA. Open the online link (also works on a phone), or open it through Live Server in Chrome, and click **Install app** in the top bar. It then has its own window and works offline.
 
 ## Add a new game
 
