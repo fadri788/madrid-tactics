@@ -10,7 +10,7 @@ Tactical breakdowns of Real Madrid's big games (Clásicos, derbies, Champions Le
 
 **[⬇ Download the latest version (ZIP)](https://github.com/fadri788/madrid-tactics/archive/refs/heads/main.zip)**
 
-Or try it online: **https://fadri788.github.io/madrid-tactics/**
+Unzip it and open `index.html` with Live Server (see below).
 
 ## Run it
 
@@ -23,7 +23,7 @@ Open it through Live Server (or any web server), not by double-clicking: the pag
 
 ### Install as an app
 
-The site is a PWA. Open it through Live Server or the GitHub Pages link in Chrome and click **Install app** in the top bar. It then has its own window and works offline.
+The site is a PWA. Open it through Live Server in Chrome and click **Install app** in the top bar. It then has its own window and works offline.
 
 ## Add a new game
 
